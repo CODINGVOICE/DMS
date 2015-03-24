@@ -8,7 +8,7 @@
     <iterator id="DmsValueSetViewIterator" Binds="DmsValueSetView"
               DataControl="DmsModuleDataControl" RangeSize="-1"/>
     <methodIterator Binds="getDmsValueView.result"
-                    DataControl="DmsModuleDataControl" RangeSize="25"
+                    DataControl="DmsModuleDataControl" RangeSize="-1"
                     id="getDmsValueViewIterator"/>
     <iterator Binds="DmsEnabledGroupView" RangeSize="-1"
               DataControl="DmsModuleDataControl"
