@@ -14,6 +14,8 @@ import java.sql.ResultSet;
 
 import java.sql.SQLException;
 
+import java.text.DecimalFormat;
+
 import java.util.List;
 
 import oracle.jbo.jbotester.load.SimpleDateFormatter;
@@ -63,7 +65,8 @@ public class Excel2003WriterImpl {
                     obj=format.format((java.sql.Date)obj);
                 }else if(obj instanceof BigDecimal){
                     obj=((BigDecimal)obj).doubleValue();
-                    obj = ObjectUtils.toString(obj);
+                    DecimalFormat fmt=new DecimalFormat("#.################");
+                    obj=fmt.format((Double)obj);
                 }
                 else{
                     obj=ObjectUtils.toString(obj);

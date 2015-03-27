@@ -7,6 +7,8 @@ import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import java.text.DecimalFormat;
+
 import java.util.List;
 
 import oracle.adf.share.logging.ADFLogger;
@@ -58,7 +60,8 @@ public class Excel2007WriterImpl extends AbstractExcel2007Writer {
                         obj = format.format((java.sql.Date)obj);
                     } else if (obj instanceof BigDecimal) {
                         obj = ((BigDecimal)obj).doubleValue();
-                        obj = ObjectUtils.toString(obj);
+                        DecimalFormat fmt=new DecimalFormat("#.################");
+                        obj=fmt.format((Double)obj);
                     } else {
                         obj = ObjectUtils.toString(obj);
                     }

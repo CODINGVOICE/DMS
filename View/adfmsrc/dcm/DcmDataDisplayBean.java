@@ -34,6 +34,7 @@ import java.sql.Statement;
 
 import java.sql.Types;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 
 import java.util.ArrayList;
@@ -689,6 +690,8 @@ public class DcmDataDisplayBean extends TablePagination{
                         obj=format.format((java.sql.Date)obj);
                     }else if(obj instanceof BigDecimal){
                         obj=((BigDecimal)obj).doubleValue();
+                        DecimalFormat fmt=new DecimalFormat("#.################");
+                        obj=fmt.format((Double)obj);
                     }
                     else{
                         obj=ObjectUtils.toString(obj);
