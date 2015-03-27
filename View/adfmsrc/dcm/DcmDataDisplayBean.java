@@ -21,6 +21,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import java.math.BigDecimal;
+
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 
@@ -685,7 +687,10 @@ public class DcmDataDisplayBean extends TablePagination{
                     if(obj instanceof java.sql.Date){
                         SimpleDateFormatter format=new SimpleDateFormatter("yyyy-MM-dd hh:mm:ss");
                         obj=format.format((java.sql.Date)obj);
-                    }else{
+                    }else if(obj instanceof BigDecimal){
+                        obj=((BigDecimal)obj).doubleValue();
+                    }
+                    else{
                         obj=ObjectUtils.toString(obj);
                     }
                     row.put(col.getDbTableCol(),obj);

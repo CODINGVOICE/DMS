@@ -30,13 +30,12 @@
         <f:facet name="toolbar">
           <af:toolbar id="t2">
             <af:group id="grp1">
-              <af:commandButton disabled="#{viewScope.DcmDataDisplayBean.isEditable eq false}" 
+              <af:commandButton disabled="#{viewScope.DcmDataDisplayBean.isEditable eq false}"
                                 text="#{viewBundle['dcm.action.new']}" id="cb1"
                                 partialTriggers="::pgl1"
                                 action="#{viewScope.DcmDataDisplayBean.operation_new}"/>
               <af:commandButton text="#{viewBundle['dcm.action.delete']}"
-                                id="cb2"
-                                partialTriggers="::pgl1"
+                                id="cb2" partialTriggers="::pgl1"
                                 disabled="#{viewScope.DcmDataDisplayBean.isEditable eq false}"
                                 action="#{viewScope.DcmDataDisplayBean.operation_delete}"/>
               <af:commandButton text="#{viewBundle['dcm.action.save']}" id="cb3"
@@ -44,15 +43,13 @@
                                 partialTriggers="::pgl1"
                                 action="#{viewScope.DcmDataDisplayBean.operation_save}"/>
               <af:commandButton text="#{viewBundle['dcm.action.reset']}"
-                                id="cb4"
-                                partialTriggers="::pgl1"
+                                id="cb4" partialTriggers="::pgl1"
                                 disabled="#{viewScope.DcmDataDisplayBean.isEditable eq false}"
                                 action="#{viewScope.DcmDataDisplayBean.operation_reset}"/>
             </af:group>
             <af:group id="grp2">
               <af:commandButton text="#{viewBundle['dcm.action.import']}"
-                                id="cb10"
-                                partialTriggers="::pgl1"
+                                id="cb10" partialTriggers="::pgl1"
                                 disabled="#{viewScope.DcmDataDisplayBean.isEditable eq false}">
                 <af:showPopupBehavior popupId="::p2" alignId=""/>
               </af:commandButton>
@@ -84,10 +81,8 @@
             </af:group>
             <af:group id="g2">
               <af:outputText value="#{viewBundle['dms.common.pagenation_seg01']}"
-                             id="ot6"
-                             />
-              <af:inputText id="it2" simple="true" columns="4"
-                            autoSubmit="true"
+                             id="ot6"/>
+              <af:inputText id="it2" simple="true" columns="4" autoSubmit="true"
                             valueChangeListener="#{viewScope.DcmDataDisplayBean.gotoPage}"
                             value="#{viewScope.DcmDataDisplayBean.curPage}"/>
               <af:outputText value="#{af:formatString(viewBundle['dms.common.pagenation_seg02'],viewScope.DcmDataDisplayBean.totalPage)}"
@@ -95,9 +90,9 @@
             </af:group>
             <af:group id="g3">
               <af:commandImageLink id="cil3" icon="/images/page-next.gif"
-                            actionListener="#{viewScope.DcmDataDisplayBean.nextPage}"/>
+                                   actionListener="#{viewScope.DcmDataDisplayBean.nextPage}"/>
               <af:commandImageLink id="cil4" icon="/images/page-last.gif"
-                            actionListener="#{viewScope.DcmDataDisplayBean.lastPage}"/>
+                                   actionListener="#{viewScope.DcmDataDisplayBean.lastPage}"/>
             </af:group>
             <af:group id="g4">
               <af:commandImageLink id="cil5" icon="/images/refresh.gif"/>
@@ -289,13 +284,13 @@
                 </af:gridCell>
                 <af:gridCell marginStart="5px" marginEnd="5px" width="auto"
                              id="gc9">
-                  <af:selectBooleanRadio text="#{viewBundle['dcm.export.03format']}"
-                                         id="sbr3" group="excelFormat1"
-                                         simple="true"/>
                   <af:selectBooleanRadio text="#{viewBundle['dcm.export.07format']}"
                                          id="sbr4" group="excelFormat1"
                                          simple="true" autoSubmit="true"
                                          value="#{viewScope.DcmDataDisplayBean.isXlsx}"/>
+                  <af:selectBooleanRadio text="#{viewBundle['dcm.export.03format']}"
+                                         id="sbr3" group="excelFormat1"
+                                         simple="true"/>
                 </af:gridCell>
               </af:gridRow>
               <af:gridRow marginTop="5px" marginBottom="5px" height="auto"
@@ -328,14 +323,13 @@
                 </af:gridCell>
                 <af:gridCell marginStart="5px" marginEnd="5px" width="auto"
                              id="gc29">
-                  <af:selectBooleanRadio text="#{viewBundle['dcm.export.03format']}"
-                                         id="sbr23" group="excelFormat"
-                                         simple="true"
-                                         />
                   <af:selectBooleanRadio text="#{viewBundle['dcm.export.07format']}"
                                          id="sbr24" group="excelFormat"
                                          simple="true" autoSubmit="true"
                                          value="#{viewScope.DcmDataDisplayBean.isXlsx}"/>
+                  <af:selectBooleanRadio text="#{viewBundle['dcm.export.03format']}"
+                                         id="sbr23" group="excelFormat"
+                                         simple="true"/>
                 </af:gridCell>
               </af:gridRow>
               <af:gridRow marginTop="5px" marginBottom="5px" height="auto"

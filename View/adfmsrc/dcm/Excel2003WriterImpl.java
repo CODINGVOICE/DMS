@@ -7,6 +7,8 @@ import dcm.template.TemplateEO;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import java.math.BigDecimal;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -14,8 +16,10 @@ import java.sql.SQLException;
 
 import java.util.List;
 
+import oracle.jbo.jbotester.load.SimpleDateFormatter;
 import oracle.jbo.server.DBTransaction;
 
+import org.apache.commons.lang.ObjectUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -53,7 +57,18 @@ public class Excel2003WriterImpl {
             for (ColumnDef col : this.colsdef) {
                 Cell cell = row.createCell(colInx);
                 ++colInx;
-                cell.setCellValue(rs.getString(col.getDbTableCol()));
+                Object obj=rs.getObject(col.getDbTableCol().toUpperCase());
+                if(obj instanceof java.sql.Date){
+                    SimpleDateFormatter format=new SimpleDateFormatter("yyyy-MM-dd hh:mm:ss");
+                    obj=format.format((java.sql.Date)obj);
+                }else if(obj instanceof BigDecimal){
+                    obj=((BigDecimal)obj).doubleValue();
+                    obj = ObjectUtils.toString(obj);
+                }
+                else{
+                    obj=ObjectUtils.toString(obj);
+                }
+                cell.setCellValue((String)obj);
             }
             ++n;
         }
