@@ -32,6 +32,7 @@ import java.sql.SQLException;
 
 import java.sql.Statement;
 
+import java.sql.Timestamp;
 import java.sql.Types;
 
 import java.text.DecimalFormat;
@@ -685,8 +686,11 @@ public class DcmDataDisplayBean extends TablePagination{
                 Map row = new HashMap();
                 for (ColumnDef col : this.colsdef) {
                     Object obj=rs.getObject(col.getDbTableCol().toUpperCase());
+                    if(obj instanceof Timestamp){
+                       obj=new java.sql.Date(((Timestamp)obj).getTime());
+                    }
                     if(obj instanceof java.sql.Date){
-                        SimpleDateFormatter format=new SimpleDateFormatter("yyyy-MM-dd hh:mm:ss");
+                        SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
                         obj=format.format((java.sql.Date)obj);
                     }else if(obj instanceof BigDecimal){
                         obj=((BigDecimal)obj).doubleValue();
